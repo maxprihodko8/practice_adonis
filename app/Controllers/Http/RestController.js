@@ -3,8 +3,8 @@ class RestController {
     return this.default('index');
   }
 
-  async create() {
-    return this.default('create');
+  async create({ response }) {
+    return response.status(200).json({ model: this.constructor.model, action: 'create' });
   }
 
   async view() {
@@ -15,14 +15,12 @@ class RestController {
     return this.default('update');
   }
 
-  async delete() {
-    return this.default('delete');
+  async delete({ response }) {
+    return response.status(204).json({ model: this.constructor.model, action: 'create' });
   }
 
-  async default(action) {
-    return new Promise(resolve => {
-      resolve({ model: this.constructor.model, action });
-    });
+  default(action) {
+    return { model: this.constructor.model, action };
   }
 }
 
