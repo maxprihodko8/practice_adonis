@@ -2,8 +2,12 @@
 const Model = use('Model');
 
 class Product extends Model {
+  static get updatedAtColumn() {
+    return null;
+  }
+
   type() {
-    return this.hasOne('App/Models/Type');
+    return this.belongsTo('App/Models/Type');
   }
 
   user() {

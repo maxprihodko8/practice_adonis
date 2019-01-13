@@ -1,7 +1,7 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema');
 
-class ProductToUserSchema extends Schema {
+class UserForAProductSchema extends Schema {
   up() {
     this.table('products', table => {
       table
@@ -24,4 +24,4 @@ class ProductToUserSchema extends Schema {
   }
 }
 
-module.exports = ProductToUserSchema;
+module.exports = UserForAProductSchema;

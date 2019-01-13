@@ -8,7 +8,8 @@
 |
 */
 
-const faker = require('faker');
+/** @type {import('@adonisjs/lucid/src/Factory')} */
+const Factory = use('Factory');
 
 /* const Hash = use('Hash'); */
 
@@ -18,18 +19,7 @@ class UserSeeder {
   async run() {
     await User.query().delete();
 
-    const users = [];
-
-    [...Array(5).keys()].forEach(number => {
-      users.push({
-        id: number,
-        username: faker.internet.userName(),
-        email: faker.internet.email(),
-        password: 'user'
-      });
-    });
-
-    await User.createMany(users);
+    await Factory.model('App/Models/User').createMany(5);
   }
 }
 
